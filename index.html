@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Terminal L1 — Entraînement Linux</title>
+  <meta name="description" content="Simulateur de terminal Linux pour réviser l'UE Linux de L1 MI : parcours guidé, QCM, examens blancs, progression.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b1020'/%3E%3Ctext x='10' y='42' font-family='monospace' font-size='30' fill='%2332f5a6'%3E%3E_%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="loader"><div class="ld-logo">&gt;_</div><div class="ld-txt">Démarrage du serveur starwars…</div><div class="ld-bar"><i></i></div></div>
+
+  <header class="topbar">
+    <div class="brand" title="Terminal L1"><span class="logo">&gt;_</span><span class="brand-txt">Terminal <b>L1</b></span></div>
+    <nav class="tabs" role="tablist">
+      <button data-view="parcours" class="on"><span class="ti">🧭</span><span class="tl">Parcours</span></button>
+      <button data-view="libre"><span class="ti">💻</span><span class="tl">Libre</span></button>
+      <button data-view="qcm"><span class="ti">✅</span><span class="tl">QCM</span></button>
+      <button data-view="examens"><span class="ti">📝</span><span class="tl">Examens</span></button>
+      <button data-view="memo"><span class="ti">📚</span><span class="tl">Mémo</span></button>
+      <button data-view="stats"><span class="ti">📈</span><span class="tl">Progression</span></button>
+      <i class="tab-ink"></i>
+    </nav>
+    <div class="xpbox" title="Ton niveau et ton expérience">
+      <div class="lvl"><span class="lvl-n">1</span></div>
+      <div class="xpinfo"><div class="xp-title">Touriste du terminal</div><div class="xpbar"><i></i></div><div class="xp-num">0 XP</div></div>
+    </div>
+    <button class="userbtn" title="Connexion / profil"><span class="avatar">👤</span><span class="uname">Invité</span></button>
+  </header>
+
+  <main>
+    <!-- vue terminal (parcours, libre, examen en cours) -->
+    <section class="view view-term on" id="view-term">
+      <div class="left">
+        <div id="exPanel"></div>
+        <div class="term-wrap">
+          <div class="term-bar">
+            <span class="dots"><i></i><i></i><i></i></span>
+            <span class="term-title">etudiant@starwars: ~</span>
+            <span class="term-actions">
+              <button data-act="help" title="Aide du simulateur">❔ aide</button>
+              <button data-act="clear" title="Effacer l'écran (Ctrl+L)">⌫ effacer</button>
+              <button data-act="tree" class="only-mobile" title="Afficher l'arborescence">🌳</button>
+            </span>
+          </div>
+          <div id="term"></div>
+        </div>
+      </div>
+      <div class="splitter" title="Glisser pour redimensionner"></div>
+      <aside id="tree"></aside>
+    </section>
+
+    <section class="view" id="view-qcm"></section>
+    <section class="view" id="view-examens"></section>
+    <section class="view" id="view-memo"></section>
+    <section class="view" id="view-stats"></section>
+  </main>
+
+  <div class="gui-host"></div>
+  <div id="modal" class="modal"></div>
+  <div id="toasts"></div>
+  <canvas id="fx"></canvas>
+
+  <!-- données (annexes des TP / CM / annales) -->
+  <script src="js/data/annexes.js"></script>
+  <!-- moteur -->
+  <script src="js/core/vfs.js"></script>
+  <script src="js/core/shell.js"></script>
+  <script src="js/core/cmd_util.js"></script>
+  <script src="js/core/cmd_files.js"></script>
+  <script src="js/core/cmd_text.js"></script>
+  <script src="js/core/cmd_find.js"></script>
+  <script src="js/core/cmd_sys.js"></script>
+  <script src="js/core/man.js"></script>
+  <script src="js/core/world.js"></script>
+  <!-- contenu pédagogique -->
+  <script src="js/content/engine.js"></script>
+  <script src="js/content/exercises.js"></script>
+  <script src="js/content/qcm.js"></script>
+  <script src="js/content/exams.js"></script>
+  <script src="js/content/memo.js"></script>
+  <!-- interface -->
+  <script src="js/ui/terminal.js"></script>
+  <script src="js/ui/tree.js"></script>
+  <script src="js/ui/store.js"></script>
+  <script src="js/ui/app.js"></script>
+</body>
+</html>
